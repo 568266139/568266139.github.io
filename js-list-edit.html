@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>liet-edit</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        a,
+        a:link {
+            text-decoration: none
+        }
+
+        .wrapper {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        .news {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .news li {
+            display: block;
+            position: relative;
+            line-height: 2;
+            border-bottom: 1px #f1f1f1 solid;
+            padding: 20px 0px;
+        }
+
+        .news li a.title {
+            float: left;
+        }
+
+        .news li .time {
+            float: right;
+            margin-left: 10px;
+        }
+
+        .news li .delbtn {
+            display: none;
+            float: right;
+            border-radius: 5px;
+            background: #f60;
+            color: #fff;
+            padding: 0 10px;
+        }
+
+        .news li .delbtn:hover {
+            background: #f90;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul class="news">
+            <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题1</a><span
+                    class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li>
+            <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题2</a><span
+                    class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li>
+            <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题3</a><span
+                    class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li>
+            <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题4</a><span
+                    class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li>
+            <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题5</a><span
+                    class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li>
+            <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题6</a><span
+                    class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li>
+            <!-- <li><input type="checkbox" name="newsid" value=""><a href="" name="title">我是列表标题7</a><span
+                        class="time">2019-04-23</span><a class="delbtn" href="javascript:;">删除</a></li> -->
+
+        </ul>
+        <button id="batdelbtnquan">全选</button>
+        <button id="batdelbtnquanremove">取消</button>
+        <button id="batdelbtn">删除选中项</button>
+        <button id="nexpag">更多</button>
+    </div>
+    <script>
+
+        var data = [
+            { title: "我是列表标题7", time: "2019-04-24" },
+            { title: "我是列表标题8", time: "2019-04-25" },
+            { title: "我是列表标题9", time: "2019-04-26" },
+            { title: "我是列表标题10", time: "2019-04-27" },
+            { title: "我是列表标题11", time: "2019-04-28" },
+            { title: "我是列表标题12", time: "2019-04-29" }
+        ]
+
+        var list = document.getElementsByClassName("news")[0].getElementsByTagName("li");
+        shubiao();
+
+        function shubiao() {
+            for (let i = 0; i < list.length; i++) {
+
+                //移除当前节点
+                list[i].getElementsByClassName("delbtn")[0].addEventListener("click", function () {
+                    this.parentNode.remove();
+                })
+                //鼠标移入事件
+                list[i].addEventListener("mouseover", function () {
+
+                    this.style.borderBottom = "1px #f30 solid";
+                    this.getElementsByClassName("delbtn")[0].style.display = "block";
+                });
+                //鼠标移出事件
+                list[i].addEventListener("mouseout", function () {
+
+                    this.style.borderBottom = "1px #f1f1f1 solid";
+                    this.getElementsByClassName("delbtn")[0].style.display = "none";
+                });
+            }
+        }
+        //删除多选
+        document.getElementById("batdelbtn").addEventListener("click", function () {
+            var checks = document.getElementsByName("newsid");
+            // console.log(i);
+            for (let i = checks.length - 1; i >= 0; i--) {
+                //   console.log("循环第"+i);
+                if (checks[i].checked) {
+                    // console.log("第"+i+"个选中");
+                    // console.log(checks[i]);
+                    checks[i].parentNode.remove();
+                }
+            }
+        });
+        //全选
+        document.getElementById("batdelbtnquan").addEventListener("click", function () {
+            var checkboxs = document.getElementsByTagName("input");
+            //    console.log(checkboxs[0].checked);
+            for (let i = 0; i < checkboxs.length; i++) {
+                checkboxs[i].checked = true;
+            }
+
+        })
+        //取消选择
+        document.getElementById("batdelbtnquanremove").addEventListener("click", function () {
+            var removecheckboxs = document.getElementsByTagName("input");
+            for (let i = 0; i < removecheckboxs.length; i++) {
+                if (removecheckboxs[i].checked) {
+                    removecheckboxs[i].checked = false;
+                }
+            }
+        })
+
+        //添加li节点
+        document.getElementById("nexpag").addEventListener("click", function () {
+            for (let i = 0; i < data.length; i++) {
+                //复制节点
+                var newnode = list[i].cloneNode(true);
+                //新节点赋值
+                newnode.children[1].innerHTML = data[i].title;
+                newnode.children[2].innerHTML = data[i].time;
+
+                //    console.log(list[i].cloneNode(true));
+                document.getElementsByClassName("news")[0].appendChild(newnode);
+            }
+            shubiao();
+
+
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+//递归拿取所有子节点
+// function naqu(){
+//     console.log(list);
+//     for(let i=0;i<list.length;i++){
+
+//     }
+// }
+
+
+
+    </script>
+</body>
+
+</html>
