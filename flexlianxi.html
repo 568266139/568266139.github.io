@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: row;
+            margin: 40px auto;
+            width: 150px;
+            height: 150px;
+            border: 1px royalblue solid;
+            justify-content: space-around;
+        }
+
+        .box div:not(.box2) {
+            /* width: 200px; */
+            height: 50px;
+            border: 1px red solid;
+            word-wrap: break-word;
+        }
+
+        .box2 {
+
+            height: 50px;
+            border: 1px red solid;
+            word-wrap: break-word;
+            align-self: flex-end;
+        }
+
+        .box3 {
+            display: flex;
+            align-items: flex-start;
+            align-content: center;
+            width: 200px;
+            height: 150px;
+            border: 1px royalblue solid;
+            justify-content: center;
+            margin: 40px auto;
+        }
+
+        .box3 div {
+            width: 50px;
+            height: 50px;
+            border: 1px red solid;
+            word-wrap: break-word;
+        }
+
+        .box4 {
+            flex-shrink: 0;
+        }
+
+        .image-list {
+            margin: 20px auto;
+            padding: 40px;
+            display: flex;
+            flex-direction: row;
+            border: 1px slategray solid;
+            width: 500px;
+            height: 200px;
+
+        }
+
+        .image {
+            width: 200px;
+            height: 200px;
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            max-width: 300px;
+        }
+
+        .title {
+            margin-bottom: 20px;
+        }
+
+        .title h3 {
+            text-align: center;
+        }
+
+        .brief {
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            word-wrap: break-word;
+
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+            margin-bottom: 10px;
+            text-indent: 2em;
+        }
+
+        .three-image-list {
+            display: flex;
+            flex-direction: row;
+            border: 1px gray solid;
+            max-width: 1000px;
+            min-width: 500px;
+            margin: 10px auto;
+            justify-content: space-around;
+            padding: 40px;
+        }
+
+        .three-image-list div {
+            /* width: 300px; */
+            /* height: 900px; */
+            text-align: center;
+
+        }
+
+        .three-list-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: auto;
+        }
+
+        .three-list-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .three-list {
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px;
+        }
+
+        .three-list-title h3 {
+            max-width: 200px;
+            overflow: hidden;
+            text-align: center;
+            margin: 10px auto;
+
+        }
+
+        .three-list-brief span {
+            overflow: hidden;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-width: 200px;
+            text-indent: 2em;
+        }
+
+        .leftimage-righttext {
+            min-width: 500px;
+            max-width: 700px;
+            padding: 40px;
+            border: 1px rgb(100, 99, 100) solid;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            /* justify-content: center; */
+        }
+
+        .leftimage-righttext-one{
+            display: flex;
+            flex-direction: row;
+            max-width: 500px;
+            margin-top:20px;
+            margin: auto;
+        }
+        .leftimage-righttext-one:nth-child(2n){
+            flex-direction:row-reverse;
+        }
+        .leftimage-righttext-img{
+            width: 250px;
+            height: 250px;
+        }
+        .leftimage-righttext-img img{
+            width: 100%;
+            height: 100%;
+        }
+        .leftimage-righttext-text{
+            /* max-width: 300px; */
+margin-left: 20px;
+        }
+        .leftimage-righttext-text h3{
+            text-align: center;
+            margin-top:20px;
+        }
+        .leftimage-righttext-text span{
+            overflow: hidden;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-width: 200px;
+            text-indent: 2em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>我是1</div>
+        <div class="box2">我是2</div>
+        <div>我是3</div>
+
+    </div>
+    <hr>
+    <div class="box3">
+        <div>我是1</div>
+        <div class="box4">我是2</div>
+        <div>我是3</div>
+        <div>我是5</div>
+        <div>我是6</div>
+
+    </div>
+    <hr>
+    <!-- 图片列表 -->
+    <div class="image-list">
+        <div class="image">
+            <img src="https://w.wallhaven.cc/full/kw/wallhaven-kw1ky1.jpg">
+        </div>
+        <div class="list">
+            <div class="title">
+                <h3>标题</h3>
+            </div>
+
+            <div class="brief">一个标题一个标题一个标题一个标题一个标题一个标题一个标题一个标题一个标题一个标题一个标题一个标题一一</div>
+
+        </div>
+    </div>
+    <hr>
+    <!-- 三列图文列表 -->
+    <section class="three-image-list">
+        <div class="three-list">
+            <div class="three-list-img">
+                <img src="https://w.wallhaven.cc/full/xl/wallhaven-xl9ogo.jpg">
+
+            </div>
+            <div class="three-list-title">
+                <h3>动画</h3>
+            </div>
+            <div class="three-list-brief">
+                <span>
+                    动画的概念不同于一般意义上的动画片，动画是一种综合艺术，它是集合了绘画、电影、数字媒体、摄影、音乐、文、数字媒体、摄影、音乐、文
+                </span>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="three-list">
+            <div class="three-list-img">
+                <img src="https://w.wallhaven.cc/full/ey/wallhaven-ey26er.jpg">
+
+            </div>
+            <div class="three-list-title">
+                <h3>动画</h3>
+            </div>
+            <div class="three-list-brief">
+                <span>
+                    动画的概念不同于一般意义上的动画片，动画是一种综合艺术，它是集合了绘画、电影、数字媒体、摄影、音乐、文、数字媒体、摄影、音乐、文
+                </span>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="three-list">
+            <div class="three-list-img">
+                <img src="https://w.wallhaven.cc/full/p8/wallhaven-p8yr59.jpg">
+
+            </div>
+            <div class="three-list-title">
+                <h3>动画</h3>
+            </div>
+            <div class="three-list-brief">
+                <span>
+                    动画的概念不同于一般意义上的动画片，动画是一种综合艺术，它是集合了绘画、电影、数字媒体、摄影、音乐、文、数字媒体、摄影、音乐、文
+                </span>
+            </div>
+        </div>
+    </section>
+    <!-- 左图右文列表 -->
+    <section class="leftimage-righttext">
+
+        <div class="leftimage-righttext-one">
+            <div class="leftimage-righttext-img">
+                <img src="https://w.wallhaven.cc/full/r2/wallhaven-r2p6g1.jpg">
+            </div>
+            <div class="leftimage-righttext-text">
+                <h3>Cartoon</h3>
+                <span>动画制作是一项非常繁琐的工作，分工极为细致。通常分为前期制作、中期制作、后期制作。前期制作又包括了企划、作品设定、资金募集等</span>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="leftimage-righttext-one">
+                <div class="leftimage-righttext-img">
+                    <img src="https://w.wallhaven.cc/full/39/wallhaven-39623d.jpg">
+                </div>
+                <div class="leftimage-righttext-text">
+                    <h3>Cartoon</h3>
+                    <span>动画制作是一项非常繁琐的工作，分工极为细致。通常分为前期制作、中期制作、后期制作。前期制作又包括了企划、作品设定、资金募集等</span>
+                </div>
+            </div>
+        <!-- 3 -->
+        <div class="leftimage-righttext-one">
+                <div class="leftimage-righttext-img">
+                    <img src="https://w.wallhaven.cc/full/ey/wallhaven-ey623w.jpg">
+                </div>
+                <div class="leftimage-righttext-text">
+                    <h3>Cartoon</h3>
+                    <span>动画制作是一项非常繁琐的工作，分工极为细致。通常分为前期制作、中期制作、后期制作。前期制作又包括了企划、作品设定、资金募集等</span>
+                </div>
+            </div>
+        <!-- 4 -->
+        <div class="leftimage-righttext-one">
+                <div class="leftimage-righttext-img">
+                    <img src="https://w.wallhaven.cc/full/zm/wallhaven-zmd9zv.jpg">
+                </div>
+                <div class="leftimage-righttext-text">
+                    <h3>Cartoon</h3>
+                    <span>动画制作是一项非常繁琐的工作，分工极为细致。通常分为前期制作、中期制作、后期制作。前期制作又包括了企划、作品设定、资金募集等</span>
+                </div>
+            </div>
+        <!-- end -->
+   
+
+    </section>
+</body>
+
+</html>
