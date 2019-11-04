@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣诞</title>
+    <script src="//at.alicdn.com/t/font_1490394_1vb6zfq9qmc.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 100%;
+            height: 950px;
+            background: url("../img/back.jpg") center center;
+            background-size: 1920px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .xuehua1 {
+            animation: rotate 10s linear infinite;
+        }
+
+        .maozi,
+        .christmasTree,
+        .shengdanrencai,
+        .wazi {
+            width: 1.5em;
+            height: 1.5em;
+            animation: rotate 10s linear infinite;
+        }
+
+
+
+        .icon-box {
+            display: inline-block;
+            animation: down 20s linear infinite;
+            position: absolute;
+            left: 200px;
+            top: -10px;
+        }
+
+        @keyframes down {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(1000px);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateZ(0);
+            }
+
+            100% {
+                transform: rotateZ(720deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="box" id="boxs">
+
+        <!-- <div class="icon-box">
+            <svg class="icon xuehua1" aria-hidden="true">
+                <use xlink:href="#icon-xuehuayuanjiao"></use>
+            </svg>
+        </div>
+        <div class="icon-box">
+            <svg class="icon maozi" aria-hidden="true">
+                <use xlink:href="#icon-icon-test"></use>
+            </svg>
+        </div>
+        <div class="icon-box">
+            <svg class="icon christmasTree" aria-hidden="true">
+                <use xlink:href="#icon-ChristmasTree"></use>
+            </svg>
+        </div>
+
+        <div class="icon-box">
+            <svg class="icon shengdanrencai" aria-hidden="true">
+                <use xlink:href="#icon-shengdan-rencai"></use>
+            </svg>
+        </div>
+        <div class="icon-box">
+            <svg class="icon wazi" aria-hidden="true">
+                <use xlink:href="#icon-icon-test1"></use>
+            </svg>
+        </div> -->
+    </section>
+
+    <script>
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var num = 100;
+        for (let i = 0; i < num; i++) {
+            var establish = document.createElement("div");
+
+            if(i%2==0){
+                console.log(i+"maoz")
+                establish.innerHTML="<svg class="+'"icon xuehua1"' +" aria-hidden="+"true>"+
+                "<use xlink:href="+"#icon-xuehuayuanjiao></use>"+"</svg>";
+             
+                }
+                else if(i%3==0){
+                    establish.innerHTML="<svg class="+'"icon christmasTree"' +" aria-hidden="+"true>"+
+                "<use xlink:href="+"#icon-ChristmasTree></use>"+"</svg>";
+                }
+                else if(i%5==0){
+                    establish.innerHTML="<svg class="+'"icon shengdanrencai"' +" aria-hidden="+"true>"+
+                "<use xlink:href="+"#icon-shengdan-rencai></use>"+"</svg>";
+                }
+                else if(i%7==0){
+                    establish.innerHTML="<svg class="+'"icon wazi"' +" aria-hidden="+"true>"+
+                "<use xlink:href="+"#icon-icon-test1></use>"+"</svg>";
+                }
+
+                else{
+                    establish.innerHTML="<svg class="+'"icon maozi"' +" aria-hidden="+"true>"+
+                "<use xlink:href="+"#icon-icon-test></use>"+"</svg>";
+                }
+
+
+
+
+            establish.className="icon-box";
+            establish.style.top=-20+"px";
+            establish.style.left =getRndInteger(0,1920)+"px";
+            establish.style.animation="down "+getRndInteger(10,20)+"s"+" linear infinite "+getRndInteger(3,5)+"s";
+            document.getElementById("boxs").appendChild(establish);
+            //
+
+           
+        }
+    </script>
+</body>
+
+</html>
